@@ -6,7 +6,7 @@
 /*   By: mle-gars <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:23:09 by mle-gars          #+#    #+#             */
-/*   Updated: 2023/07/10 19:28:08 by mle-gars         ###   ########.fr       */
+/*   Updated: 2023/07/20 11:44:05 by mle-gars         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_strlen(char *str)
 	lgr = 0;
 	while (str[lgr] != '\0')
 	{
-		++lgr;
+		lgr++;
 	}
 	return (lgr);
 }
@@ -31,6 +31,8 @@ int	ft_check_base(char *base)
 	int	j;
 
 	i = 0;
+	if (ft_strlen(base) < 2)
+		return (0);
 	while (base[i] != '\0')
 	{
 		if (base[i] == '+' || base[i] == '-' || base[i] == '\0'
@@ -41,23 +43,23 @@ int	ft_check_base(char *base)
 		{
 			if (base[j] == base [i])
 				return (0);
-			++j;
+		j++;
 		}
-		++i;
+	i++;
 	}
 	if (i < 2)
 		return (0);
 	return (1);
 }
 
-int	ft_fd_index(char index, char *base)
+int	ft_fd_index(char c, char *base)
 {
 	int	i;
 
 	i = 0;
 	while (base[i])
 	{
-		if (base[i] == index)
+		if (base[i] == c)
 			return (i);
 		i++;
 	}
@@ -73,7 +75,7 @@ int	ft_atoi_base(char *str, char *base)
 	resultat = 0;
 	posneg = 1;
 	i = 0;
-	if (!ft_check_base(base))
+	if (ft_check_base(base) == 0)
 		return (0);
 	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
@@ -83,7 +85,7 @@ int	ft_atoi_base(char *str, char *base)
 			posneg = posneg * -1;
 		i++;
 	}
-	while (!(str[i] == 32 || (str[i] >= 9 && str[i] <= 13)) && str[i])
+	while (ft_fd_index(str[i], base) >= 0)
 	{
 		resultat = resultat * ft_strlen(base) + ft_fd_index(str[i], base);
 		if (ft_fd_index(str[i], base) == -1)

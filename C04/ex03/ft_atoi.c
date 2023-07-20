@@ -6,7 +6,7 @@
 /*   By: mle-gars <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/08 19:07:30 by mle-gars          #+#    #+#             */
-/*   Updated: 2023/07/10 19:56:10 by mle-gars         ###   ########.fr       */
+/*   Updated: 2023/07/12 10:09:46 by mle-gars         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_atoi(char *str)
 	while (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
-			posneg = -1;
+			posneg = posneg * (-1);
 		i++;
 	}
 	while (ft_isnum(str[i]))

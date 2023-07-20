@@ -6,7 +6,7 @@
 /*   By: mle-gars <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 12:43:45 by mle-gars          #+#    #+#             */
-/*   Updated: 2023/07/07 14:21:53 by mle-gars         ###   ########.fr       */
+/*   Updated: 2023/07/13 10:27:21 by mle-gars         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char *argv[])
 	int	i;
 
 	i = 1;
-	while(i < argc)
+	while (i < argc)
 	{
 		ft_putstr(argv[i]);
 		ft_putstr("\n");

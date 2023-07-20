@@ -6,7 +6,7 @@
 /*   By: mle-gars <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 12:58:47 by mle-gars          #+#    #+#             */
-/*   Updated: 2023/07/12 13:43:39 by mle-gars         ###   ########.fr       */
+/*   Updated: 2023/07/20 14:13:15 by mle-gars         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_is_prime(int n)
 		return (1);
 	if (n == 0 || n == 1 || n < 0 || n % 2 == 0)
 		return (0);
-	while (ispri < n / ispri)
+	while (ispri <= n / ispri)
 	{
 		if (n % ispri == 0)
 			return (0);

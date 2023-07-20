@@ -6,7 +6,7 @@
 /*   By: mle-gars <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 09:09:57 by mle-gars          #+#    #+#             */
-/*   Updated: 2023/07/13 17:20:19 by mle-gars         ###   ########.fr       */
+/*   Updated: 2023/07/12 09:44:14 by mle-gars         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_sqrt(int nb)
 	int	nbinr;
 
 	nbinr = 0;
-	while ((nbinr * nbinr <= nb) && (nbinr < 46341))
+	while (nbinr * nbinr <= nb)
 	{
 		if (nbinr * nbinr == nb)
 			return (nbinr);
