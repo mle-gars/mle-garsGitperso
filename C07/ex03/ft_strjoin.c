@@ -6,7 +6,7 @@
 /*   By: mle-gars <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 10:21:55 by mle-gars          #+#    #+#             */
-/*   Updated: 2023/07/18 16:37:12 by mle-gars         ###   ########.fr       */
+/*   Updated: 2023/07/19 15:39:58 by mle-gars         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	ft_strlen(char *str)
 
 char	*ft_strcat(char *dest, char *src)
 {
-	int	i;
-	int	j;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
 	while (dest[i])
@@ -41,13 +41,11 @@ char	*ft_strcat(char *dest, char *src)
 	return (dest);
 }
 
-int	ft_tot_length(int size, char **strs, char *sep)
+int	ft_tot_length(int size, char **strs)
 {
 	int	tot_length;
-	int	sep_length;
 	int	k;
 
-	sep_length = ft_strlen(sep);
 	tot_length = 0;
 	k = 0;
 	while (k < size)
@@ -55,34 +53,35 @@ int	ft_tot_length(int size, char **strs, char *sep)
 		tot_length += ft_strlen(strs[k]);
 		k++;
 	}
-	tot_length += (size - 1) * sep_length;
 	return (tot_length);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)
 {
 	char	*result;
-	char	*empty_str;
+	int		tot_len;
 	int		l;
 
-	result = malloc((ft_tot_length(size, strs, sep) + 1) * sizeof(char));
 	if (size == 0)
 	{
-		empty_str = malloc(sizeof(char));
-		empty_str[0] = '\0';
-		return (empty_str);
+		result = malloc(sizeof(char));
+		*result = 0;
+		return (result);
 	}
-	if (result == NULL)
-		return (NULL);
+	tot_len = ft_tot_length(size, strs) + 1 + (size - 1) * ft_strlen(sep);
+	result = malloc(tot_len * sizeof(char));
+	if (result == 0)
+		return (0);
+	result[0] = '\0';
 	l = 0;
 	while (l < size)
 	{
 		ft_strcat(result, strs[l]);
-		if (l != size - 1)
-			ft_strcat(result, sep);
 		l++;
+		if (l < size)
+			ft_strcat(result, sep);
 	}
-	result[ft_tot_length(size, strs, sep) + 1] = '\0';
+	result[tot_len - 1] = '\0';
 	return (result);
 }
 

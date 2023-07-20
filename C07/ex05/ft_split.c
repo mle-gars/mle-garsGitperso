@@ -6,11 +6,11 @@
 /*   By: mle-gars <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:42:03 by mle-gars          #+#    #+#             */
-/*   Updated: 2023/07/18 21:25:55 by mle-gars         ###   ########.fr       */
+/*   Updated: 2023/07/19 17:20:38 by mle-gars         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include<stdlib.h>
+/*#include<stdlib.h>
 #include<stdio.h>
 
 int	ft_issep(char c, char *charset)
@@ -85,37 +85,36 @@ char	**ft_split(char *str, char *charset)
 		if (!ft_issep(*str, charset))
 		{
 			if (!in_word)
-			{
-				in_word = 1;
 				wd_length = 0;
-			}
 			wd_length++;
+			in_word = 1;
 		}
-		else
+		else if (in_word)
 		{
-			if (in_word)
-			{
-				result[wd_index] = ft_strdup(str - wd_length, wd_length);
-				wd_index++;
-				in_word = 0;
-			}
+			result[wd_index++] = ft_strdup(str - wd_length, wd_length);
+			in_word = 0;
 		}
 		str++;
 	}
-	result[wd_index] = 0;
+	if (in_word)
+		result[wd_index++] = ft_strdup(str - wd_length, wd_length);
+	result[wd_index] = NULL;
 	return (result);
 }
 
-int main(void)
+int	main(void)
 {
-	char **result = ft_split("agaga+++agougou+++zbrrrre+++ddd+++", "+++");
-	int i = 0;
+	char	**result;
+	int		i;
+
+	result = ft_split("a+h++g-+", "+");
+	i = 0;
 	while (result[i] != NULL)
 	{
-		printf("%s\n", result[i]);
+		printf("%s\n%i\n", result[i], i);
 		free(result[i]);
 		i++;
 	}
 	free(result);
 	return (0);
-}
+}*/
